@@ -13,3 +13,6 @@ Done with pulling data, pushing data and display data
 Day 4:
 Search function able to sort candidates by longest time, shortest time , most expensive and least
 Able to set upper thresholds on time and cost
+
+Day 5:
+create a layuout. --- sstill need more work

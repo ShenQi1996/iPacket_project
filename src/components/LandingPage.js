@@ -1,18 +1,22 @@
 //bootstrap
 import { useState, useEffect } from "react";
 
-//bootstrap
+//MUI
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-function LandingPage({ startup, fetchAll }) {
+//style
+import "./styles/LandingPage.scss";
+
+function LandingPage({ startup, fetchAll, setLiked, liked }) {
   const [data, setData] = useState([]);
   useEffect(() => {
     setData(startup);
   }, [startup]);
 
   const handleReject = () => {
+    setLiked(!liked);
     fetchAll();
   };
 
@@ -21,7 +25,7 @@ function LandingPage({ startup, fetchAll }) {
       obj.startupData.results[0].login.uuid,
       JSON.stringify(obj)
     );
-
+    setLiked(!liked);
     fetchAll();
   };
 

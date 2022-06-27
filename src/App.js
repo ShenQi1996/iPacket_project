@@ -8,15 +8,15 @@ import Navbar from "./components/NavBar";
 import LikedPage from "./components/LikedPage";
 import LandingPage from "./components/LandingPage";
 
-//APIs
-import fetchData from "./UsefulFunctions/UsefulFunctions";
+//Useful Function
+import { fetchData } from "./UsefulFunctions/UsefulFunctions";
 
-//bootstrap
-import Container from "react-bootstrap/Container";
+//MUI
+import Container from "@mui/material/Container";
 
 function App() {
   const [startup, setStartup] = useState([]);
-
+  const [liked, setLiked] = useState(false);
   useEffect(() => {
     fetchAll();
   }, []);
@@ -32,15 +32,26 @@ function App() {
 
   console.log(startup);
   return (
-    <Container className="app d-flex flex-column justify-content-between">
+    <Container fixed className="app">
       <Router>
-        <Navbar />
+        <Navbar liked={liked} />
         <Routes>
           <Route
             path="/"
-            element={<LandingPage startup={startup} fetchAll={fetchAll} />}
+            element={
+              <LandingPage
+                startup={startup}
+                fetchAll={fetchAll}
+                setLiked={setLiked}
+                liked={liked}
+              />
+            }
           />
-          <Route exact path="/LikedPage" element={<LikedPage />} />
+          <Route
+            exact
+            path="/LikedPage"
+            element={<LikedPage setLiked={setLiked} liked={liked} />}
+          />
         </Routes>
       </Router>
     </Container>

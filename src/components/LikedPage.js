@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 
-//bootstrap
-import Row from "react-bootstrap/Row";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 
 //components
-import NonLinearSlider from "./Slikder";
+import Slikders from "./Slikders";
+import MyCard from "./MyCard";
 
-function LikedPage() {
+function LikedPage({ setLiked, liked }) {
   const [data, setData] = useState({});
   const [ogData, setogData] = useState({});
 
@@ -85,80 +83,55 @@ function LikedPage() {
 
   const handleRejectAll = () => {
     localStorage.clear();
-    setData([]);
-  };
-
-  const handleRejectLiked = key => {
-    console.log(key);
-    localStorage.removeItem(key);
-    getAllLiked();
-  };
-
-  const Cards = startupData => {
-    console.log(startupData[1]);
-    return (
-      <Col key={startupData[0]}>
-        <Card style={{ width: "20rem" }}>
-          <Card.Img
-            variant="top"
-            src={startupData[1].startupData.results[0].picture.large}
-          />
-          <Card.Body>
-            <Card.Title>
-              {startupData[1].startupData.results[0].name.title}{" "}
-              {startupData[1].startupData.results[0].name.first}{" "}
-              {startupData[1].startupData.results[0].name.last}
-            </Card.Title>
-            <Card.Text>
-              <span style={{ display: "block" }}>
-                Email: {startupData[1].startupData.results[0].email}
-              </span>
-              <span style={{ display: "block" }}>
-                Phone: {startupData[1].startupData.results[0].phone}
-              </span>
-              It's like a {startupData[1].startupData.dataIdea.this} for{" "}
-              {startupData[1].startupData.dataIdea.that}
-              <span style={{ display: "block" }}>
-                Cost: {startupData[1].startupData.cost}
-              </span>
-              Estimated Time: {startupData[1].startupData.estimated}
-            </Card.Text>
-            <Button
-              variant="primary"
-              onClick={() =>
-                handleRejectLiked(
-                  startupData[1].startupData.results[0].login.uuid
-                )
-              }
-            >
-              Reject
-            </Button>
-          </Card.Body>
-        </Card>
-      </Col>
-    );
+    setLiked(!liked);
+    setData({});
   };
 
   return (
-    <Row>
-      <Col>
+    <Grid
+      container
+      direction="row"
+      justifyContent="center"
+      alignItems="center"
+      spacing={2}
+    >
+      <Grid item xs={12}>
         <Button onClick={() => handleRejectAll()}>Reject All</Button>
+      </Grid>
+      <Grid item xs={12}>
         <Button onClick={() => findLongestTime(data)}> longest Time </Button>
+      </Grid>
+      <Grid item xs={21}>
         <Button onClick={() => findShortestTime(data)}> Shortest Time </Button>
+      </Grid>
+      <Grid item xs={12}>
         <Button onClick={() => findMostExp(data)}> Most Expensive </Button>
+      </Grid>
+      <Grid item xs={12}>
         <Button onClick={() => findleastExp(data)}>Least expensive</Button>
-        <NonLinearSlider data={data} setData={setData} oldData={ogData} />
-      </Col>
-      <Row>
-        {data === {} ? (
+      </Grid>
+      <Grid item xs={12}>
+        <Slikders setData={setData} oldData={ogData} />
+      </Grid>
+      <Grid container spacing={4}>
+        {JSON.stringify(data) === "{}" ? (
           <div>
             <h1>Nothing in the localStorage</h1>
           </div>
         ) : (
-          Object.entries(data).map(obj => Cards(obj))
+          Object.entries(data).map((obj, key) => (
+            <Grid key={key} item xs={5}>
+              <MyCard
+                startupData={obj}
+                getAllLiked={getAllLiked}
+                liked={liked}
+                setLiked={setLiked}
+              />
+            </Grid>
+          ))
         )}
-      </Row>
-    </Row>
+      </Grid>
+    </Grid>
   );
 }
 

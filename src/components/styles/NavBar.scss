@@ -1,0 +1,12 @@
+.navbar{
+    justify-content: space-between;
+    margin: 1rem 0;
+    &active{
+        color: cornflowerblue;
+        text-decoration: none;
+    }
+    &link{
+        color: gray;
+        text-decoration: none;
+    }
+}
