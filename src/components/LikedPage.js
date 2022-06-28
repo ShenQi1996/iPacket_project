@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
 
+//Style
+import "./styles/LikedPage.scss";
 //components
-import Slikders from "./Slikders";
 import MyCard from "./MyCard";
+import Option from "./Option";
 
 function LikedPage({ setLiked, liked }) {
   const [data, setData] = useState({});
@@ -88,39 +89,27 @@ function LikedPage({ setLiked, liked }) {
   };
 
   return (
-    <Grid
-      container
-      direction="row"
-      justifyContent="center"
-      alignItems="center"
-      spacing={2}
-    >
-      <Grid item xs={12}>
-        <Button onClick={() => handleRejectAll()}>Reject All</Button>
+    <Grid container spacing={5} className="likedPage">
+      <Grid item>
+        <Option
+          handleRejectAll={handleRejectAll}
+          findLongestTime={findLongestTime}
+          findShortestTime={findShortestTime}
+          findMostExp={findMostExp}
+          findleastExp={findleastExp}
+          setData={setData}
+          ogData={ogData}
+          data={data}
+        />
       </Grid>
-      <Grid item xs={12}>
-        <Button onClick={() => findLongestTime(data)}> longest Time </Button>
-      </Grid>
-      <Grid item xs={21}>
-        <Button onClick={() => findShortestTime(data)}> Shortest Time </Button>
-      </Grid>
-      <Grid item xs={12}>
-        <Button onClick={() => findMostExp(data)}> Most Expensive </Button>
-      </Grid>
-      <Grid item xs={12}>
-        <Button onClick={() => findleastExp(data)}>Least expensive</Button>
-      </Grid>
-      <Grid item xs={12}>
-        <Slikders setData={setData} oldData={ogData} />
-      </Grid>
-      <Grid container spacing={4}>
+      <Grid container item spacing={4} className="likedPageCardGrid">
         {JSON.stringify(data) === "{}" ? (
-          <div>
-            <h1>Nothing in the localStorage</h1>
-          </div>
+          <Grid item>
+            <h1>Nothing in the localStorage or nothing match the filter </h1>
+          </Grid>
         ) : (
           Object.entries(data).map((obj, key) => (
-            <Grid key={key} item xs={5}>
+            <Grid key={key} item xs={12} sm={6}>
               <MyCard
                 startupData={obj}
                 getAllLiked={getAllLiked}

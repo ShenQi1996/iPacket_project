@@ -1,3 +1,7 @@
+//Style
+import "./styles/MyCard.scss";
+
+//MUI
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
@@ -5,6 +9,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
+import Divider from "@mui/material/Divider";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function MyCard({ startupData, getAllLiked, liked, setLiked }) {
   const handleRejectLiked = key => {
@@ -13,13 +19,12 @@ function MyCard({ startupData, getAllLiked, liked, setLiked }) {
     getAllLiked();
   };
 
-  console.log(startupData[1]);
   return (
-    <Grid key={startupData[0]}>
+    <Grid item key={startupData[0]} className="myCard">
       <Card>
         <CardMedia
           component="img"
-          height="200"
+          height="180"
           image={startupData[1].startupData.results[0].picture.large}
           alt={startupData[1].startupData.results[0].name.first}
         />
@@ -29,25 +34,32 @@ function MyCard({ startupData, getAllLiked, liked, setLiked }) {
             {startupData[1].startupData.results[0].name.first}{" "}
             {startupData[1].startupData.results[0].name.last}
           </Typography>
-          <Typography variant="body2">
-            Email: {startupData[1].startupData.results[0].email}
+
+          <Typography variant="subtitle1" className="myCardIdeaInfo">
+            "It's like a {startupData[1].startupData.dataIdea.this} for{" "}
+            {startupData[1].startupData.dataIdea.that}."
           </Typography>
-          <Typography variant="body2">
-            Phone: {startupData[1].startupData.results[0].phone}
-          </Typography>
+          <Divider />
           <Typography variant="subtitle2">
             Estimated Time: {startupData[1].startupData.estimated} Months
           </Typography>
           <Typography variant="subtitle2">
             Cost: ${startupData[1].startupData.cost} Million Dollars
           </Typography>
-          <Typography variant="subtitle1">
-            It's like a {startupData[1].startupData.dataIdea.this} for{" "}
-            {startupData[1].startupData.dataIdea.that}.
+          <Typography variant="body2">
+            Email: {startupData[1].startupData.results[0].email}
+          </Typography>
+          <Typography variant="body2">
+            Phone: {startupData[1].startupData.results[0].phone}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button onClick={() => handleRejectLiked(startupData[0])}>
+        <Divider />
+        <CardActions className="myCardCardAction">
+          <Button
+            variant="contained"
+            startIcon={<DeleteIcon />}
+            onClick={() => handleRejectLiked(startupData[0])}
+          >
             Reject
           </Button>
         </CardActions>

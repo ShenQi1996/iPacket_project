@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 //Useful Functions
 import {
   Costlabels,
@@ -13,10 +11,7 @@ import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 
-function Slikders({ setData, oldData }) {
-  const [value, setValue] = useState([1, 50]);
-  const [time, setTime] = useState([1, 12]);
-
+function Slikders({ setData, ogData, value, time, setValue, setTime }) {
   const FormatData = data => {
     const CostFiltered = data.filter(
       idea =>
@@ -34,7 +29,7 @@ function Slikders({ setData, oldData }) {
 
   const handleCostChange = (event, newValue) => {
     setValue(newValue);
-    const Formated = FormatData(Object.entries(oldData));
+    const Formated = FormatData(Object.entries(ogData));
     setData(
       Formated.reduce((data, [k, v]) => {
         data[k] = v;
@@ -45,7 +40,7 @@ function Slikders({ setData, oldData }) {
 
   const handleTimeChange = (event, newValue) => {
     setTime(newValue);
-    const Formated = FormatData(Object.entries(oldData));
+    const Formated = FormatData(Object.entries(ogData));
     setData(
       Formated.reduce((data, [k, v]) => {
         data[k] = v;
@@ -55,8 +50,8 @@ function Slikders({ setData, oldData }) {
   };
 
   return (
-    <Grid>
-      <Grid item xs={4}>
+    <Grid container item spacing={2}>
+      <Grid item xs={10}>
         <Typography id="non-linear-slider" gutterBottom>
           Cost: {valueLabelFormatCost(value)}
         </Typography>
@@ -72,7 +67,7 @@ function Slikders({ setData, oldData }) {
           disableSwap
         />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={10}>
         <Typography id="non-linear-slider" gutterBottom>
           Estimated Time: {valueLabelFormatTime(time)}
         </Typography>
