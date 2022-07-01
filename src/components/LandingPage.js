@@ -125,13 +125,13 @@ function LandingPage({ startup, fetchAll, setLiked, liked, setChecked }) {
         </Grid>
         <Grid container item xs={12}>
           <Grid item xs={6}>
-            <Typography variant="h6">
+            <Typography variant="subtitle1">
               <TimerIcon color="primary" /> {data[0].startupData.estimated}{" "}
               Months.
             </Typography>
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="h6">
+            <Typography variant="subtitle1">
               <AttachMoneyIcon color="primary" /> {data[0].startupData.cost}{" "}
               Millions.
             </Typography>
