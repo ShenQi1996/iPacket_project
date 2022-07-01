@@ -1,0 +1,16 @@
+
+.paperLandingPage{
+    opacity: .9;
+}
+
+.LandingPage{
+    padding: 0.5rem 0.5rem;
+    align-items: center;
+    text-align: center;
+    &LikeBtn{
+        color: rgb(224, 95, 95);
+    }
+}
+.TipsAndUpdatesIcon{
+    padding-top: 10rem;
+}

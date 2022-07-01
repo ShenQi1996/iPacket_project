@@ -11,6 +11,11 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Divider from "@mui/material/Divider";
 import DeleteIcon from "@mui/icons-material/Delete";
+import TimerIcon from "@mui/icons-material/Timer";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import EmailIcon from "@mui/icons-material/Email";
+import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 
 function MyCard({ startupData, getAllLiked, liked, setLiked }) {
   const handleRejectLiked = key => {
@@ -34,23 +39,28 @@ function MyCard({ startupData, getAllLiked, liked, setLiked }) {
             {startupData[1].startupData.results[0].name.first}{" "}
             {startupData[1].startupData.results[0].name.last}
           </Typography>
-
+          <Divider />
           <Typography variant="subtitle1" className="myCardIdeaInfo">
+            <TipsAndUpdatesIcon fontSize="small" color="primary" />
             "It's like a {startupData[1].startupData.dataIdea.this} for{" "}
             {startupData[1].startupData.dataIdea.that}."
           </Typography>
+          <Typography variant="subtitle2">
+            <TimerIcon fontSize="small" color="primary" />{" "}
+            {startupData[1].startupData.estimated} Months
+          </Typography>
+          <Typography variant="subtitle2">
+            <AttachMoneyIcon fontSize="small" color="primary" />{" "}
+            {startupData[1].startupData.cost} Million Dollars
+          </Typography>
           <Divider />
-          <Typography variant="subtitle2">
-            Estimated Time: {startupData[1].startupData.estimated} Months
-          </Typography>
-          <Typography variant="subtitle2">
-            Cost: ${startupData[1].startupData.cost} Million Dollars
+          <Typography variant="body2">
+            <EmailIcon fontSize="small" color="primary" />{" "}
+            {startupData[1].startupData.results[0].email}
           </Typography>
           <Typography variant="body2">
-            Email: {startupData[1].startupData.results[0].email}
-          </Typography>
-          <Typography variant="body2">
-            Phone: {startupData[1].startupData.results[0].phone}
+            <PhoneAndroidIcon fontSize="small" color="primary" />{" "}
+            {startupData[1].startupData.results[0].phone}
           </Typography>
         </CardContent>
         <Divider />

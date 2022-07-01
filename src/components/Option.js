@@ -47,7 +47,7 @@ function Option({
 
   const list = anchor => (
     <Box
-      sx={{ width: 360 }}
+      sx={{ width: 330 }}
       role="presentation"
       onClick={toggleDrawer(anchor, true)}
       onKeyDown={toggleDrawer(anchor, false)}

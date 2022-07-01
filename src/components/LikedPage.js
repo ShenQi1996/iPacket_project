@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 
+//MUI
 import Grid from "@mui/material/Grid";
-
+import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
+import Grow from "@mui/material/Grow";
+import Paper from "@mui/material/Paper";
+import Zoom from "@mui/material/Zoom";
 //Style
 import "./styles/LikedPage.scss";
 //components
@@ -11,6 +15,7 @@ import Option from "./Option";
 function LikedPage({ setLiked, liked }) {
   const [data, setData] = useState({});
   const [ogData, setogData] = useState({});
+  const [checked, setChecked] = useState(true);
 
   useEffect(() => {
     getAllLiked();
@@ -90,7 +95,7 @@ function LikedPage({ setLiked, liked }) {
 
   return (
     <Grid container spacing={5} className="likedPage">
-      <Grid item>
+      <Grid item xs={12}>
         <Option
           handleRejectAll={handleRejectAll}
           findLongestTime={findLongestTime}
@@ -102,21 +107,37 @@ function LikedPage({ setLiked, liked }) {
           data={data}
         />
       </Grid>
-      <Grid container item spacing={4} className="likedPageCardGrid">
+      <Grid container item spacing={4}>
         {JSON.stringify(data) === "{}" ? (
-          <Grid item>
-            <h1>Nothing in the localStorage or nothing match the filter </h1>
-          </Grid>
+          <Zoom
+            in={checked}
+            style={{ transitionDelay: checked ? `100ms` : "0ms" }}
+          >
+            <Paper className="Paper404page">
+              <Grid item xs={12}>
+                <h1>
+                  {" "}
+                  <SentimentVeryDissatisfiedIcon fontSize="large" /> Something
+                  went worng!!
+                </h1>
+              </Grid>
+            </Paper>
+          </Zoom>
         ) : (
           Object.entries(data).map((obj, key) => (
-            <Grid key={key} item xs={12} sm={6}>
-              <MyCard
-                startupData={obj}
-                getAllLiked={getAllLiked}
-                liked={liked}
-                setLiked={setLiked}
-              />
-            </Grid>
+            <Zoom
+              in={checked}
+              style={{ transitionDelay: checked ? `${key}00ms` : "0ms" }}
+            >
+              <Grid key={key} item xs={12} sm={6} md={4}>
+                <MyCard
+                  startupData={obj}
+                  getAllLiked={getAllLiked}
+                  liked={liked}
+                  setLiked={setLiked}
+                />
+              </Grid>
+            </Zoom>
           ))
         )}
       </Grid>

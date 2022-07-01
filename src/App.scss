@@ -1,5 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
 
+
 .app{
+    padding-bottom: 0.4rem;
+    &LandingPageContainer{
+        display: flex !important;
+        justify-content: center;
+        padding: 0 !important;
+        margin: 0;
+    }
+
 
 }
