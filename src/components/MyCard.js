@@ -34,7 +34,12 @@ function MyCard({ startupData, getAllLiked, liked, setLiked }) {
           alt={startupData[1].startupData.results[0].name.first}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            className="myCardIdeaInfo"
+          >
             {startupData[1].startupData.results[0].name.title}{" "}
             {startupData[1].startupData.results[0].name.first}{" "}
             {startupData[1].startupData.results[0].name.last}
@@ -51,10 +56,10 @@ function MyCard({ startupData, getAllLiked, liked, setLiked }) {
           </Typography>
           <Typography variant="subtitle2">
             <AttachMoneyIcon fontSize="small" color="primary" />{" "}
-            {startupData[1].startupData.cost} Million Dollars
+            {startupData[1].startupData.cost} Million
           </Typography>
           <Divider />
-          <Typography variant="body2">
+          <Typography variant="body2" className="myCardIdeaInfo">
             <EmailIcon fontSize="small" color="primary" />{" "}
             {startupData[1].startupData.results[0].email}
           </Typography>

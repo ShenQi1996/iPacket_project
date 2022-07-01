@@ -61,11 +61,11 @@ const Timelabels = [
 ];
 
 const valueLabelFormatCost = value => {
-  return `Higher than ${value[0]} Million Dollars but under ${value[1]} Million Dollars`;
+  return `Higher than ${value[0]} Million but under ${value[1]} Million`;
 };
 
 const valueLabelFormatTime = time => {
-  return `Higher than ${time[0]} Months estimated time but under ${time[1]} Months estimated time`;
+  return `Higher than ${time[0]} Months but under ${time[1]} Months`;
 };
 
 export {

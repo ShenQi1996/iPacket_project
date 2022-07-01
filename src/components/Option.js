@@ -120,7 +120,7 @@ function Option({
         variant="contained"
         onClick={toggleDrawer("left", true)}
       >
-        {"Filiter"}
+        {"Filter"}
       </Button>
       <Drawer
         anchor={"left"}

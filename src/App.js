@@ -14,12 +14,15 @@ import { fetchData } from "./UsefulFunctions/UsefulFunctions";
 //MUI
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
+import Fade from "@mui/material/Fade";
 
 function App() {
   const [startup, setStartup] = useState([]);
   const [liked, setLiked] = useState(false);
+  const [checked, setChecked] = useState(false);
   useEffect(() => {
     fetchAll();
+    setChecked(true);
   }, []);
 
   const fetchAll = async () => {
@@ -31,18 +34,16 @@ function App() {
     return <div></div>;
   }
 
-  console.log(startup);
   return (
     <Container fixed>
       <Grid
         container
-        xs={12}
         flexDirection={"row"}
         justifyContent={"center"}
         className="app"
       >
         <Router>
-          <Grid item xs={12} sm={8} md={5} lg={4} xl={6}>
+          <Grid item xs={12} sm={8} md={5} lg={4} xl={4}>
             <Navbar liked={liked} />
           </Grid>
           <Routes>
@@ -50,14 +51,17 @@ function App() {
               path="/"
               element={
                 <div className="appLandingPageContainer">
-                  <Grid item xs={12} sm={8} md={5} lg={4} xl={6}>
-                    <LandingPage
-                      startup={startup}
-                      fetchAll={fetchAll}
-                      setLiked={setLiked}
-                      liked={liked}
-                    />
-                  </Grid>
+                  <Fade in={checked}>
+                    <Grid item xs={12} sm={8} md={5} lg={4} xl={4}>
+                      <LandingPage
+                        startup={startup}
+                        fetchAll={fetchAll}
+                        setLiked={setLiked}
+                        liked={liked}
+                        setChecked={setChecked}
+                      />
+                    </Grid>
+                  </Fade>
                 </div>
               }
             />

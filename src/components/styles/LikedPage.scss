@@ -1,9 +1,22 @@
+.Page404Container{
+    margin: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .Paper404page{
     opacity: 0.9;
     padding: 1rem;
     margin: 1rem;
+    height: 25rem;
+    display: flex;
+    align-items: center;
+
 }
+
 .likedPage{
     padding: 0.5rem;
-
+    margin-bottom: 20rem;
 }

@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 //MUI
 import Grid from "@mui/material/Grid";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
-import Grow from "@mui/material/Grow";
 import Paper from "@mui/material/Paper";
 import Zoom from "@mui/material/Zoom";
 //Style
@@ -11,11 +10,12 @@ import "./styles/LikedPage.scss";
 //components
 import MyCard from "./MyCard";
 import Option from "./Option";
+import { Typography } from "@mui/material";
 
 function LikedPage({ setLiked, liked }) {
   const [data, setData] = useState({});
   const [ogData, setogData] = useState({});
-  const [checked, setChecked] = useState(true);
+  const [checked] = useState(true);
 
   useEffect(() => {
     getAllLiked();
@@ -109,25 +109,36 @@ function LikedPage({ setLiked, liked }) {
       </Grid>
       <Grid container item spacing={4}>
         {JSON.stringify(data) === "{}" ? (
-          <Zoom
-            in={checked}
-            style={{ transitionDelay: checked ? `100ms` : "0ms" }}
+          <Grid
+            container
+            item
+            xs={12}
+            rowSpacing={3}
+            className="Page404Container"
           >
-            <Paper className="Paper404page">
-              <Grid item xs={12}>
-                <h1>
-                  {" "}
-                  <SentimentVeryDissatisfiedIcon fontSize="large" /> Something
-                  went worng!!
-                </h1>
-              </Grid>
-            </Paper>
-          </Zoom>
+            <Grid item xs={12}>
+              <Zoom
+                in={checked}
+                style={{ transitionDelay: checked ? `100ms` : "0ms" }}
+              >
+                <Paper className="Paper404page">
+                  <Grid item xs={12}>
+                    <SentimentVeryDissatisfiedIcon fontSize="large" />
+                    <Typography variant="h4">Nothing show</Typography>
+                    <Typography variant="h5">
+                      Please check localstorage or filter.
+                    </Typography>
+                  </Grid>
+                </Paper>
+              </Zoom>
+            </Grid>
+          </Grid>
         ) : (
           Object.entries(data).map((obj, key) => (
             <Zoom
               in={checked}
               style={{ transitionDelay: checked ? `${key}00ms` : "0ms" }}
+              key={key}
             >
               <Grid key={key} item xs={12} sm={6} md={4}>
                 <MyCard

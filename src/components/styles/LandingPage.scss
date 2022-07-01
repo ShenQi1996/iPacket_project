@@ -1,6 +1,39 @@
+$like-rotate: rotate(30deg);
+$reject-rotate: rotate(-30deg);
+
+
 
 .paperLandingPage{
     opacity: .9;
+}
+
+.LandingPageOverLay{
+    &Liked{
+        position: absolute; 
+        width: 100%;
+        justify-content: center;
+    transform: $like-rotate;
+    text-transform: uppercase;
+    color: rgb(224, 95, 95)
+    }
+
+    &Reject{
+        position: absolute; 
+        width: 100%;
+        justify-content: center;
+        transform: $reject-rotate;
+        text-transform: uppercase;
+        color: rgb(58, 53, 53);
+    }
+}
+
+
+.show{
+    display: flex;
+}
+
+.hidden{
+    display: none;
 }
 
 .LandingPage{
@@ -10,7 +43,18 @@
     &LikeBtn{
         color: rgb(224, 95, 95);
     }
-}
-.TipsAndUpdatesIcon{
-    padding-top: 10rem;
+
+
+    &IdeaGrid{
+        padding-left: 1.5rem !important;
+        padding-right: 1rem;
+    }
+    
+    &Img{
+        border-radius: 0.5rem;
+    }
+    &BtnGrid{
+        margin-top: 1rem !important;
+
+    }
 }
