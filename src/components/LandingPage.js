@@ -87,7 +87,7 @@ function LandingPage({ startup, fetchAll, setLiked, liked, setChecked }) {
             {...(checkLiked ? { timeout: 1000 } : {})}
           >
             <Grid item>
-              <Typography variant="h2">
+              <Typography variant="h1">
                 Liked <ThumbUpIcon fontSize="large" />
               </Typography>
             </Grid>
@@ -108,8 +108,8 @@ function LandingPage({ startup, fetchAll, setLiked, liked, setChecked }) {
             {...(checkRejected ? { timeout: 1000 } : {})}
           >
             <Grid item>
-              <Typography variant="h2">
-                Rejected <ThumbDownIcon fontSize="large" />
+              <Typography variant="h1">
+                Next <ThumbDownIcon fontSize="large" />
               </Typography>
             </Grid>
           </Grow>
@@ -138,11 +138,15 @@ function LandingPage({ startup, fetchAll, setLiked, liked, setChecked }) {
           </Grid>
         </Grid>
         <Grid item xs={12}>
-          <img
-            src={data[0].startupData.results[0].picture.large}
-            alt={data[0].startupData.results[0].name.first}
-            className="LandingPageImg"
-          />
+          <div className="LandingPageImgBox">
+            <div>
+              <img
+                src={data[0].startupData.results[0].picture.large}
+                alt={data[0].startupData.results[0].name.first}
+                className="LandingPageImg"
+              />
+            </div>
+          </div>
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h5">

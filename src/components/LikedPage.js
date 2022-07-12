@@ -15,7 +15,7 @@ import { Typography } from "@mui/material";
 function LikedPage({ setLiked, liked }) {
   const [data, setData] = useState({});
   const [ogData, setogData] = useState({});
-  const [checked] = useState(true);
+  const [checked, setChecked] = useState(true);
 
   useEffect(() => {
     getAllLiked();
@@ -46,6 +46,11 @@ function LikedPage({ setLiked, liked }) {
         return accum;
       }, {})
     );
+
+    setChecked(prv => !prv);
+    setTimeout(() => {
+      setChecked(prv => !prv);
+    }, 500);
   };
 
   const findShortestTime = obj => {
@@ -59,6 +64,11 @@ function LikedPage({ setLiked, liked }) {
         return accum;
       }, {})
     );
+
+    setChecked(prv => !prv);
+    setTimeout(() => {
+      setChecked(prv => !prv);
+    }, 500);
   };
 
   const findMostExp = obj => {
@@ -72,6 +82,11 @@ function LikedPage({ setLiked, liked }) {
         return accum;
       }, {})
     );
+
+    setChecked(prv => !prv);
+    setTimeout(() => {
+      setChecked(prv => !prv);
+    }, 500);
   };
 
   const findleastExp = obj => {
@@ -85,12 +100,21 @@ function LikedPage({ setLiked, liked }) {
         return accum;
       }, {})
     );
+
+    setChecked(prv => !prv);
+    setTimeout(() => {
+      setChecked(prv => !prv);
+    }, 500);
   };
 
   const handleRejectAll = () => {
     localStorage.clear();
     setLiked(!liked);
-    setData({});
+    setChecked(false);
+
+    setTimeout(() => {
+      setData({});
+    }, 500);
   };
 
   return (

@@ -6,8 +6,14 @@
         text-overflow: ellipsis;
     }
 
+    
+    &IdeaInfo:hover{
+        white-space: normal;
+        overflow: visible;
+    }
 
     &CardAction{
        flex-direction: row-reverse;
     }
 }
+

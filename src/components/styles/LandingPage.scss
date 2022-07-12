@@ -49,6 +49,18 @@ $reject-rotate: rotate(-30deg);
         padding-left: 1.5rem !important;
         padding-right: 1rem;
     }
+
+    &ImgBox{
+        display: flex;
+        justify-content: center;
+    }
+
+
+    &ImgBox > div{
+        border-radius: 0.5rem;
+        box-shadow: 0 0 0 0 rgb(129, 219, 247);
+        animation: pulse 2s infinite;
+    }
     
     &Img{
         border-radius: 0.5rem;
@@ -56,5 +68,19 @@ $reject-rotate: rotate(-30deg);
     &BtnGrid{
         margin-top: 1rem !important;
 
+    }
+
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(129, 219, 247);
+        }
+    
+        70% {
+            box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+        }
+    
+        100% {
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
     }
 }
